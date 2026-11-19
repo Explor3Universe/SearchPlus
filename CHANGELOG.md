@@ -6,7 +6,7 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Added
 
-- Plugin icon (`assets/icon.png`), referenced from the Claude Code, Cursor and Agent Plugins manifests.
+- Plugin icon for catalog listings (Claude Code, Cursor and Agent Plugins manifests).
 - Cursor plugin manifest (`.cursor-plugin/plugin.json`).
 
 ## [1.1.0] — 2026-11-19
