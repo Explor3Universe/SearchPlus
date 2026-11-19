@@ -1,179 +1,191 @@
-# Дуэль самоопровержения — практикум
+# The self-refutation duel — a practicum
 
-Дополнение к закону 0 в `SKILL.md`. Здесь — как именно проводить дуэль каждого тезиса: иерархия доказательств, шкала весов, ловушки и разборы реальных прогонов.
+A supplement to Law 0 in `SKILL.md`. The duel rules live there; here are the evidence hierarchy, the weight scale, the owner test and a breakdown of typical failures. If anything here disagrees with `SKILL.md`, `SKILL.md` wins.
 
-## Центральная идея
+## The central idea
 
-Поиск находит **текст**. Текст описывает **прошлое** — момент, когда его написали. Между находкой и ответом стоит вопрос, который сам поиск не закрывает: **как обстоит дело сейчас?**
+Search finds **text**. Text describes **the past** — the moment it was written — and **a specific context** — the object, segment and conditions it was written for. Between a find and an answer stand two questions that search itself does not close:
 
-У изменчивого факта есть **владелец состояния** — тот, кто уполномочен говорить, как сейчас: оператор линии, ведомство, автор кода, издатель расписания, официальный реестр. Верификация — спросить владельца (или свежую новость о нём), а не соседей. Гайды, форумы, прайс-листы и справочники — свидетели прошлого: они переживают то, что описывают.
+1. **What is the state of things on the user's target date?**
+2. **Is this about the same object, segment and condition the user needs?**
 
-Насыщение выдачи не доказывает истинность: устаревший факт обилен, SEO-свеж и согласен сам с собой (десять копий одного предка).
+A changeable fact has a **state owner** — whoever is authorized to say how things are now and who updates the source when the thing changes: the service operator, the agency, the code author, the timetable publisher, the official registry. Guides, forums, price lists and directories are witnesses of the past: they outlive what they describe.
 
-## Когда дуэль обязательна
+## When the duel is mandatory
 
-Всё, что может измениться со временем:
+Anything that can change over time:
 
-- работа/существование сервиса, линии, магазина, проекта, компании;
-- цены, тарифы, расписания, часы работы;
-- статусы: deprecated, EOL, переименован, куплен, закрыт;
-- поведение ПО/флагов/API между версиями;
-- законы, правила, требования;
-- «X существует» и «X не существует».
+- whether a service, line, shop, project or company works or exists;
+- prices, tariffs, access conditions, schedules, opening hours;
+- statuses: deprecated, EOL, renamed, acquired, closed;
+- behavior of software, flags, APIs between versions;
+- laws, rules, requirements;
+- "X exists" and "X does not exist".
 
-Дуэль не нужна для: дат исторических событий, авторства, содержимого конкретного коммита/письма/выпуска — там свой закон: читай сам первичный артефакт целиком.
+No duel is needed for dates of historical events, authorship, the content of a specific commit, letter or release. They have their own law: read the primary artifact itself, in full.
 
-## Четыре проверки
+## Five checks
 
-### 1. Смерть-запрос
+### 1. Binding
 
-Формула: `[точное имя кандидата] + [глагол смерти] + [год]`, на языке вопроса и на EN, плюс заход в новостную вертикаль (`+ новости`, `site:` новостных доменов).
+Before counting a source as a vote FOR or AGAINST, check four coordinates:
 
-Словарь глаголов смерти:
+| Coordinate | Question | Typical transfer |
+|---|---|---|
+| Object | The same product, plan, service run, version, rule? | News about the closure of a neighboring product from the same company; a rule for another API version; another plan from the same lineup |
+| Segment | For the same user: where they are from, which account, document, region, platform they have? | Instructions written for users of another country; a corporate price instead of a consumer one; a rule for residents |
+| Time | True on the target date? | A base schedule without the exceptions for the period; a condition that will change by announcement before the target date |
+| Condition | Under which mode, profile, setting, plan? | "Free" during a trial taken as "free forever" |
 
-- RU: закрыт, отменён, прекратил, не работает, больше не, перестал
-- EN: closed, shut down, discontinued, ceased, stopped, no longer, gone, bankrupt
+A mismatch on any coordinate turns the source into evidence about a different claim (`OFFSCOPE` in the log). It neither confirms nor refutes the target claim.
+
+### 2. Death query
+
+Formula: `[exact name of the object] + [death verb] + [year]` in the question's language, in EN and in the owner's language, plus the news vertical.
+
+Dictionary of death verbs:
+
+- RU: закрыт, отменён, прекратил, не работает, больше не, перестал, приостановлен
+- EN: closed, shut down, discontinued, ceased, stopped, no longer, suspended, bankrupt
 - HE: נסגר, בוטל, הופסק, פשט את הרגל
 - ZH: 停运, 关闭, 停止运营, 破产
-- DE / FR / ES: eingestellt, geschlossen / fermé, supprimé / cerrado, eliminado
+- DE / FR / ES: eingestellt, geschlossen, ausgesetzt / fermé, supprimé, suspendu / cerrado, eliminado, suspendido
 
-Пройден, если: новости о смерти не нашлись **и** выполнена проверка 2. Новость о смерти сильнее любого количества гайдов.
+For access conditions add the requirement form: `X requires …`, `X … required`, `X impossible without …`.
 
-### 2. Первичная живость
+Passed if the results were **read** (owner documents in the results opened), no news of the death of this very object was found, **and** check 3 was done.
 
-Иерархия доказательств для «работает сейчас»:
+### 3. Primary liveness — by the owner's layers
 
-| Источник | Что доказывает |
+Evidence hierarchy for "true on the target date":
+
+| Source | What it proves |
 |---|---|
-| Сайт/расписание/реестр оператора, официальное объявление | **работает** (сверь сезон/дату изменения, если есть) |
-| Свежая новость о закрытии или изменении | **не работает / изменилось** — сильнее любого гайда |
-| Свежая новость о работе | работает (вторично к оператору) |
-| Гайд, блог, TripAdvisor, Reddit, форум | только «работало на дату поста»; нет даты — не доказывает ничего |
-| Прайс-лист, тарифная сетка, адресный справочник | ничего: тарифы и справки переживают сервисы |
-| Память модели | гипотеза; в изменчивых фактах ошибается в обе стороны |
+| The owner's exceptions page for the target period (disruptions, status, incidents, known issues, amendments) | the state **on that date**; stronger than the base rule |
+| The owner's live base-rule page (schedule, prices, documentation, registry) | works **per the base plan**; without checking exceptions — not "on your date" |
+| Binding terms (documentation, billing, terms of service) | the access condition; stronger than the same owner's landing page and pricing page |
+| Official publication channel (gazette, register of acts, official journal, dated release note) | a change from its effective date; stronger than reference pages not yet updated |
+| Landing page, pricing page, marketing summary | the owner's statement about itself; for conditions — until checked against the binding terms |
+| Fresh dated news about the closure or change of **this object** | does not work / has changed — stronger than guides; loses to the owner's live page dated after the event |
+| Fresh dated news about operation | works (secondary to the owner) |
+| Dated guide, forum | "worked as of the post date" |
+| Undated guide, forum, directory, price list | nothing: directories outlive services |
+| Model memory | a hypothesis: wrong both ways on changeable facts |
+| A search tool's summary, an AI overview, a reading tool's retelling of a page without a verbatim quote | nothing: a lead on where to look |
 
-Классические ловушки:
+Classic traps:
 
-- **«Есть тариф — есть линия»**: строка в тарифной сетке остаётся после смерти линии.
-- **Справочник с «часами работы»**: каталоги не обязаны убирать умершие конторы.
-- **Гайд-2026 с фактом-2019**: дата страницы ≠ дата факта. Свежие гайды переписывают старые, перенося факты.
-- **Форумное согласие**: десять форумов, отвечающих одному и тому же вопросу одного туриста, — один источник.
+- **"There's a tariff, so there's a service"**: a line in a tariff table stays after the service dies.
+- **A directory with "opening hours"**: catalogs are not obliged to remove dead businesses.
+- **A fresh page with an old fact**: page date ≠ fact date.
+- **The base plan instead of the date**: a schedule or documentation is true "in general", but an exception published separately applies for the target period.
+- **A landing page instead of terms**: the pricing page promises one thing, the billing documentation requires another.
+- **Silence of the base**: the base page does not mention the user's case, and an exception for it is published on a separate page of the same owner.
+- **Reference pages lag behind the gazette**: a new value is already in force per the official publication, while reference pages and retellings still show the old one.
 
-### 3. Датировка факта
+### 4. Dating the fact
 
-Для каждого подтверждающего источника выпиши: когда написан, когда обновлён, какое время описывает. Не датированный источник не считается подтверждением изменчивого факта. Свежесть факта = максимум по датам источников-владельцев состояния, а не по самой свежей странице.
+For each source write down: when it was written, when it was updated, which period it describes. An undated source does not confirm a changeable fact. A fact's freshness is the maximum over the dates of owner sources, not over the freshest page.
 
-### 4. Независимость
+### 5. Independence
 
-Проверь цепочку знания: откуда источник знает то, что пишет? Цитирует другой гайд? Переписывает форум? Один предок = один источник. Три «независимых» гайда с одной ошибкой — один источник с ошибкой.
+How does the source know what it writes? Does it quote another guide? Rewrite the vendor? One ancestor = one source.
 
-## Дуэль: взвешивание, что сильнее
+## Weight scale
 
-Закон 0 требует не «сделать контр-запрос», а вынести вердикт. Дуэль — пять шагов по каждому тезису, который хочет попасть в ответ (не только по главному).
-
-1. Тезис одной фразой: настоящее время, операционный глагол, год.
-2. ЗА: каждый источник с классом (`владелец состояния` / `новость` / `свидетель прошлого`) и датой факта.
-3. ПРОТИВ: смерть-запрос + смежные формы (`X перестал`, `X исчез`, `X нерегулярно`, `X жалобы 2026`). Минимум один опровергающий запрос на каждый тезис — даже на «очевидный».
-4. Взвешивание по шкале ниже — поштучно.
-5. Вердикт до публикации: `ТЕЗИС ВЫИГРАЛ` / `ОПРОВЕРЖЕНИЕ ВЫИГРАЛО` / `НИЧЬЯ`.
-
-### Шкала весов
-
-| Доказательство | Вес для «работает сейчас» |
+| Evidence | Weight for "true on the target date" |
 |---|---|
-| Живая страница владельца состояния (оператор, реестр, официальное расписание) | максимальный |
-| Свежая датированная новость о смерти/закрытии | высокая — сильнее любого числа гайдов |
-| Свежая датированная новость о работе | средняя |
-| Датированный гайд/форум | низкая: «работало на дату» |
-| Недатированный гайд/форум/справочник/прайс-лист | нулевая |
-| Память модели | нулевая: гипотеза |
+| The owner's exceptions page for the target period | maximum |
+| The owner's live base-rule page, exceptions checked | maximum |
+| The owner's binding terms | maximum for access conditions |
+| The owner's official publication channel | maximum for rules, fees and limits from the effective date |
+| The owner's live base-rule page, exceptions **not** checked | high, but only "per the base plan" |
+| Fresh dated news of the death of **this object** (binding passed) | high |
+| A report by a government body, audit or controller (a register of facts) | high |
+| The owner's landing or pricing page — for conditions | medium: needs checking against the binding terms |
+| Fresh dated news about operation | medium |
+| Dated guide, forum | low |
+| Undated guide, forum, directory, price list | zero |
+| Any source that failed binding | zero for this claim |
+| A search tool's summary or a retelling without a quote | zero: a lead |
+| Model memory | zero: a hypothesis |
 
-Правила взвешивания:
+Weighing rules:
 
-- Сравнивай **лучшее из ЗА с лучшим из ПРОТИВ**, а не количество против количества.
-- Копии одного предка = один голос: сначала проверь, не переписывают ли «разные» источники один текст.
-- Сто гайдов одного класса — это один гайд. Число источников не добавляет веса, если класс тот же.
-- Равный вес — ничья. Ничья не публикуется как факт.
+- Compare **the best of FOR with the best of AGAINST**, not quantity with quantity.
+- One scale for both sides: a refutation goes through binding, dating and class just like a confirmation.
+- Copies of one ancestor = one vote. A hundred guides of one class are one guide.
+- Equal weight is a draw. A draw is not published as fact.
 
-### Тест владельца состояния
+## The cause query: a causal check
 
-Владелец — не «любой официальный документ», а источник, который **обновляется при изменении вещи**. Три вопроса:
+A change in the state of the world almost always has a **mechanism**: a reform, a law, a bankruptcy, a revoked license, repairs, a policy change, a crisis, a court ruling. Before a verdict, look for it with a query.
 
-1. Если X закроется завтра — изменится ли этот источник? (расписание оператора — да; тарифный приказ, справочник, POI в навигаторе — нет)
-2. Отвечает ли он за «сейчас» или описывает прошлое/другой контекст?
-3. Говорит ли он о X по существу или упоминает попутно (тарифом, адресом, запретом)?
+**Formula:** `why/почему/为什么 + X + closed/stopped/cancelled/shut down` + years; for temporary changes — `X repairs / works / maintenance / closure + period`.
 
-Провал любого вопроса — не владелец. Реальные примеры провалов (прогоны моделей): приказ Минтранса о **тарифе** шерута принят за доказательство **работы** линии («официальный тариф → работает 24/7»); Waze-точка «стоянка шерутов» — за доказательство живого сервиса; гайд — за доказательство расписания. Документ подтверждает только своё.
+What a cause gives you:
 
-### Память — тезис без даты и без истории
+1. **Explains the whole class at once**: the closure, why the guides are wrong, and why directories still show tariffs.
+2. **Dates the boundary**: everything written before the cause's date is a witness of the past.
+3. **Strengthens a refutation** with a mechanism against any number of mechanism-free confirmations.
+4. **Checks the claim symmetrically**: a live service has a carrier — an operator, a license, a tariff, a schedule, an economy.
+5. **Explains an exception**: a cause found for a temporary change (repairs, migration, a temporary restriction) confirms that the exception on the target date is real and shows when it will end.
 
-«Все знают, что X работает», расписание или цена из памяти — это тезис с нулевой поисковой историей и без даты. Два свойства делают его самым опасным:
+**A silent refutation** — with neither a cause nor a primary source — has reduced weight. But the absence of a cause does not revive the claim automatically: the owner decides, not silence.
 
-- уверенность в нём максимальна, поэтому он не попадает в очередь верификации (модели контр-проверяют выводы, но не аксиомы);
-- он тиражируется между моделями: одинаковое «точное» расписание, не совпадающее с первичником, воспроизводится в разных ответах как эхо — признак конфабуляции из обучающих данных.
+## The state-owner test
 
-Правило: изменчивый тезис из памяти дуэлируется **первым**, и его вердикт публикуется на общих основаниях. В журнале и ответе у тезиса есть граф происхождения: `поиск` / `память`.
+An owner is not "any official document" but a source that **is updated when the thing changes**. Questions:
 
-### Как выглядит проигранная дуэль (реальные прогоны, октябрь 2026)
+1. If X changes tomorrow, will this source change?
+2. Does it speak for the target date, or describe the past or the base plan?
+3. Does it address X in substance, or mention it in passing (via a tariff, an address, a ban)?
+4. **Which layer is it:** base rule, exception, binding term or marketing? Is its layer enough for the claim?
+5. **Is there a pointer on the page** ("not reflected here", "see section", "terms") — and was it followed?
+6. **Interest:** what does the source lose if the claim is false? An owner is legitimate on operational data and illegitimate on assessments of itself.
+7. **Does the source apply the rule itself** or only tell about it? If official bodies disagree, the one that checks, charges, issues or collects decides.
+8. **Does it address the user's case** or stay silent about it? Silence of the base page is a reason to look for exceptions with the same owner, not grounds to apply the general rule.
 
-**Случай 1 — опровержение прицеплено снизу.** Модель нашла сигнал «шерут стал ходить нерегулярно, междугородний шерут частично исчез (2026)» — и прицепила его оговоркой внизу раздела, оставив в выводе «единственный дешёвый способ — шерут». Тот же прогон выдал «подтверждено (два гайда)» для цены: метку дали свидетели прошлого. Правильно: лучшее в ЗА — недатированные гайды (вес нулевой); лучшее в ПРОТИВ — новости о коллапсе (вес высокий) → **ОПРОВЕРЖЕНИЕ ВЫИГРАЛО**, шерут — закрытый, а не способ.
+Failing questions 1–3 — not an owner. Failing 4–8 — an owner, but the check is not finished: wrong layer, a pointer not followed, the wrong body, or the user's case not covered.
 
-**Случай 2 — спасение тезиса переопределением.** Модель нашла цифры коллапса (парк шерутов 2300 → 35 машин за 15 лет) и сохранила рекомендацию через подмену: «линия де-факто живёт в полулегальной форме немаркированных фургонов». Тезис «регулярный шерут работает» тихо заменён тезисом «на углу ловят частников», и вердикт присвоен новому тезису без его дуэли. У «де-факто» нет владельца состояния — максимум НИЧЬЯ («формально не подтверждено»), но не «основной способ». Тот же прогон открыл сеть бесплатных субботних линий, но конкретную линию из пригорода не нашёл: опровергнутый мертвец остался в роли «дешёвого способа» — роль ответа не закрыта победителем.
+**A filter, not a ban.** Official sources are a strong class by default and often the owner. Suspicion arises with a conflict of interest, in evaluative questions, and when pages of one owner disagree. In such disputes both sides get the full check.
 
-**Случай 3 — документ принят за владельца.** Модель нашла приказ Минтранса о тарифе шерута (актуальный, до 2027!) и написала «шерут работает 24/7 — подтверждено, официальный тариф». Тариф не обновляется при закрытии линии: он подтверждает цену, а не работу. Отсекается тестом владельца одним вопросом.
+## Memory — a claim with no date and no history
 
-### Как выглядит выигранная дуэль (реальный прогон, октябрь 2026)
+"Everyone knows X works", a schedule, a price, a command's syntax from memory — a claim with zero search history. It is doubly dangerous: confidence in it is highest, so it doesn't get into the verification queue, and it spreads between models like an echo. Such claims most often appear **while writing the answer** — which is why the inventory is done on the draft (phase 6 in `SKILL.md`).
 
-Инвентаризация («классический совет „сядь на шерут“ может устареть — проверяю, что реально ходит сейчас») → четыре смерть-запроса (`still running`, `נסגר`, `closed OR out of business` + год) → цифры коллапса → шерут понижен: «нельзя рассчитывать как на единственный план; если за полчаса не набирается — уходите» → замена подтверждена сайтами оператора (расписание с сайта проекта, сверка двух первичников, телефон справочной) → по смежному сервису в аэропорт честная ничья: «живого подтверждения не нашёл — перед вылетом звоните».
+## Typical duel failures
 
-Три признака выигранной дуэли: главный тезис опровергнут и **понижен**, а не смягчён; замена подтверждена **владельцем состояния**; по непроверяемому — открытая **ничья**, а не выдумка.
+Each failure is a class, not a case. Recognize it by its sign.
 
-## Правила дуэли
+| Failure | Sign | What to do |
+|---|---|---|
+| **Refutation tacked on at the bottom** | AGAINST found, mentioned as a caveat, recommendation kept | AGAINST is stronger → the recommendation is withdrawn |
+| **Rescue by substitution** | "Officially no, but de facto…" without its own duel | A new duel; a draw at most |
+| **A document taken for the owner** | A tariff, an order, a POI "confirm" operation | Owner test, question 1 |
+| **Counting by number** | "Confirmed by 4+ sources" without an owner | Count by class |
+| **Transfer from a neighbor** | Evidence about another object, segment or date counted for or against | Binding, check 1 |
+| **Refutation without a check** | An undated third-party page outweighed the live owner | One scale for both sides; order in time |
+| **Ritual counter-query** | Query made, results not opened; the owner's document in the results not read | A counter-query is closed only by reading |
+| **Dismissal by rank** | A contradiction from a weak source thrown out instead of checked with the owner | A weak contradiction is a lead to the binding document |
+| **Base plan instead of the date** | A general schedule or documentation taken; the exceptions page not opened, a pointer ignored | The owner's layers; pointers are mandatory |
+| **Landing page instead of terms** | The pricing page taken as the condition while the documentation is silent or contradicts it | Binding terms beat the landing page |
+| **Rejection by one constraint** | A candidate rejected, the mechanism of the violation not examined | Near miss |
+| **Blindness to a neighboring solution** | "No option", though the solution lies beyond the question's boundary (a neighboring node, another category, a combination) | Go through mechanisms |
+| **A claim after the inventory** | An inference, a detail from memory or a command appeared while writing and passed unchecked | Inventory on the draft |
+| **Passed to the user** | "Check it yourself", though the owner publishes the answer | Resolve with the owner |
+| **A hint in the question to the page** | The expected answer put into the request to the reading tool | Neutral question, verbatim quotes |
+| **A summary instead of a source** | A conclusion taken from a search tool's result or a page retelling; no verbatim quote | A summary is a lead; a statement rests on a quote |
+| **Silence of the base taken for the rule** | The base page does not mention the user's case, and the general rule applied without searching for exceptions | Search for the owner's exceptions; the rule's condition draws its boundary |
+| **Old value despite a new one found** | A new value with an effective date before the target date found but presented as "not confirmed", with the old one as primary | Check in the official publication channel; the new one is likely in force |
+| **The wrong official body** | Of two disagreeing official sources, the first one at hand taken | The owner is the one who applies the rule; an unresolved requirement — at the stricter value, with an explanation |
+| **Third-party retelling while the owner is unavailable** | The official page didn't open — and the answer is built on retellings | The owner's mirrors, search across its domains |
+| **A guessed address** | A URL composed by guesswork; a 404 taken as an answer | Addresses only from the results and from links |
+| **Segment from the environment** | The user's properties (country, OS, plan) taken from the agent's environment rather than the question | Segment from the question; the rest is a named assumption |
+| **A link about something else** | The statement is backed by a link to a page with a different value, object or date | The inventory checks the link against the statement by quote |
 
-- **Селективная верификация запрещена.** Дуэль проводится по каждому тезису; главный — первым. Проверка второстепенного элемента (у которого новость случайно всплыла в выдаче) не закрывает главное утверждение.
-- **Инвентаризация до публикации.** Все тезисы ответа выписываются списком с происхождением (`поиск` / `память`); память дуэлируется первой — модели контр-проверяют выводы, но не аксиомы.
-- **Вердикт — артефакт ответа.** Вердикт «в голове» равен его отсутствию: колонка вердикта в ответе обязательна.
-- **Документ подтверждает только своё.** Тариф — цену, POI — адрес, приказ — упоминание. Изменится ли источник при закрытии X? Нет — не владелец.
-- **Счёт ведётся по классам, не по штукам.** «Подтверждено 4+ источниками» для изменчивого факта запрещено без владельца среди них: справочник + блог + гайд + форум = один класс свидетелей прошлого, один голос с нулевым весом.
-- **Отрицательный тезис судится строже всех.** «В системе Y нет X» доказывает только полный перечень Y у владельца системы; гайд или сайт сторонней компании — не доказательство отсутствия.
-- **Подмена тезиса — новая дуэль.** «Де-факто», «по слухам», «полулегально» не выигрывают: максимум ничья.
-- **Роль ответа закрывается только победителем.** Кандидат опровергнут → ищи замену или выноси вердикт «живого варианта нет», а не смягчай мертвеца.
-- **Сомнение — обязательство.** Мысль «надо проверить, работает ли ещё» — не заметка, а незакрытая дуэль. Публиковать ответ с незакрытой дуэлью нельзя.
-- **BLOCKED ≠ проверено.** Капча, 403, Anubis, пустой бэкенд — источник не прочитан. Меняй способ доступа: raw-версия, mbox, зеркало, API, текстовый кэш, `pdftotext`. Второй поисковик не заменяет непрочитанную страницу.
-- **Отсутствие — тоже утверждение.** «X не существует / не ходит / не выпускается» можно сказать только после: (а) запроса «X работает» без подтверждения от владельца состояния, (б) смерть-запроса без новостей о смерти, (в) просмотра места, где X обязан быть (сайт оператора, реестр, сам первичный артефакт — а не его оглавление). Молчание указателей, агрегаторов и пустая выдача не доказывают отсутствие.
-- **Инструкция ≠ упоминание.** «Приходите на угол N, платите 36, ждите заполнения» публикуется только после живого подтверждения. Упоминание без подтверждения выходит с меткой «не проверено на текущесть» либо не выходит вовсе.
-- **Вывод ≠ факт.** Домысел, синтезированный в рассуждениях («обычно доплачивают за пустые места»), никогда не подаётся как факт или совет. В практических ответах — только источники.
+## What a won duel looks like
 
-## Разбор реального случая (4 модели, октябрь 2026)
+An inventory with the target point's coordinates → death queries in the question's language, EN and the owner's language → counter-query results read, owner documents opened → the cause found (if there was a change) → the base rule and the exceptions layer for the target date checked with the owner, pointers followed, the base's silence about the user's case checked by searching for exceptions, new values checked against the official publication channel → workaround mechanisms checked for rejected candidates → the refuted demoted, not softened → the replacement confirmed by the owner → for what can't be verified, an honest draw with a concrete way for the user to check.
 
-Вопрос: «Как добраться в шаббат ночью из Иерусалима в Тель-Авив без такси?»
-Правильный ответ: бесплатная линия 715 «Наим бе-Софаш» из Мевасерет-Циона (пятница 17:00–01:00 ежечасно, суббота днём; noat.co.il — сайт проекта).
-Ловушка: междугородный шерут, прекращённый за ~2 года до вопроса, но живущий во всех гайдах и справочниках.
-
-- **Claude Opus**: гайд, опубликованный в сентябре 2026, говорил «в шаббат ходят шерут и такси» → свежая страница, мёртвый факт. Правильную 715 нашёл, но сам понизил («проблема: стартует не из центра») и назвал мёртвый шерут «самым надёжным». Ответ построен на двух сниппетах, не открыто ни одной страницы; расписание 715 в ответе не совпадает с реальным.
-- **Gemini Flash**: в размышлениях написал «их статус в шаббат требует проверки» — и забыл об этом, увидев согласие форумных веток 2017–2023. Собственный домысел выдал как «лайфхак». Никаких страниц не открывал.
-- **GLM**: трижды написал «надо проверить, работает ли ещё в 2026» и помнил об отмене линий шерута в 2024–2025 — но все его запросы были утвердительными («откуда», «цена»), а вопрос закрыл прайс-листом: «тариф 36,5 ₪ в шаббут есть — значит, сервис существует». При этом свежесть автобуса 405 проверил по новости: селективная верификация.
-- **Grok**: случайно увидел опровержение — страница конкурирующей службы сообщала, что «Нешер» закрыт навсегда в 2022, а соседний справочник всё ещё показывал у неё «часы работы в шаббат». Знал нишевое название проекта, открыл сайт оператора, сверил расписание и честно пометил ограничения. Единственный верный ответ — но и он шерут не проверял.
-
-Что сделала бы дуэль: смерть-запрос «шерут Иерусалим Тель-Авив отменён / מוניות שירות בוטלו + 2026» находил новости о закрытии линий за один прогон (проверено вручную). Ни одна модель его не задала — потому что не обязана была.
-
-### Второй раунд (5 моделей, скилл с законом 0)
-
-- **Эталон (Grok 4.7)**: полный цикл — инвентаризация, четыре смерть-запроса, цифры коллапса, шерут понижен, 715 подтверждён оператором, по смежному сервису честная ничья. Механизм проходим целиком.
-- **Аксиома не дуэлирована (GLM 5.3)**: безупречный журнал на 21 запрос, контр-чек даже по FlixBus — и ни одного смерть-запроса по шеруту: «все знают, что шерут ходит» прошло как аксиома. Лечится инвентаризацией тезисов с пометкой происхождения.
-- **Спасение переопределением (GLM Flash)**: нашёл коллапс 2300→35 — и спас тезис через «де-факто полулегальные фургоны», потеряв и замену (сеть открытых линий была у него в руках).
-- **Документ вместо владельца (MiMo)**: приказ о тарифе принят за доказательство работы; «до Иерусалима не ходят» — при живой линии из пригорода.
-- **Вердикт-в-голове (Gemini Flash)**: скилл прочитан, процедура не родилась: 0 смерть-запросов, 0 вердиктов, расписание 715 из памяти — то же эхо, что у другой модели неделей раньше (конфабуляция тиражируется между моделями).
-
-Вывод раунда: сильная аналитическая модель проходит дуэль уже по тексту закона; остальным нужны процедурные костыли — инвентаризация, обязательная колонка вердикта, тест владельца, запрет подмены тезиса. Все четыре добавлены в SKILL.md и этот файл.
-
-### Третий раунд (5 моделей, скилл с инвентаризацией и вердиктом-артефактом)
-
-Механизм заработал у середины списка: слабая бесплатная модель сама исполнила смерть-запрос, нашла цифры коллапса (2300 → 35 машин) и написала «не разрешено окончательно»; сильная общая модель вынесла то же противоречие в «честные оговорки» и поставила в рекомендацию два равных варианта — шерут со звёздочкой и бесплатную линию из пригорода. Остались четыре механизма срыва:
-
-1. **Ничья без последствий.** «Противоречие не разрешено» честно записано — а тезис остался первым в рекомендации. Фикс: вердикт управляет ранжированием — ничья/опровержение убирают тезис с первой позиции; победителя нет → «надёжного варианта в категории не найдено».
-2. **Счёт штуками вместо счёта классами.** «4+ источников подтверждают работу»: справочник + блог + гайд + форум. Все — свидетели прошлого, вес нулевой. Фикс: подтверждение изменчивого факта без владельца среди источников запрещено.
-3. **Ложный владелец у отрицательного тезиса.** Модель применила дисциплину к главному тезису, а «сеть до города не доезжает» подтвердила сайтом сторонней такси-компании — и потеряла правильный ответ. Фикс: отсутствие доказывает только полный перечень системы у владельца.
-4. **Перечень системы не открыт.** Утверждение «в сети нет линии из X» вынесено без открытия полного списка линий сети, хотя первичник был в выдаче. Тот же фикс, что и №3.
-
-Вывод раунда: скилл двигает модели от «шерут работает 24/7, подтверждено» к «числится работающим, но отрасль в коллапсе — надёжного дешёвого варианта не найдено, звоните перед поездкой». Осталось сделать вердикт настолько обязательным, чтобы он перестраивал рекомендацию, а не подписывал её снизу.
+Signs: the load-bearing claim is confirmed by the owner on the right layer; no evidence is taken from a neighboring object; the answer says in plain words what is confirmed, what is not, and how to check the rest.

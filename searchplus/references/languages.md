@@ -1,66 +1,67 @@
-# Языковая матрица
+# The language matrix
 
-## Зачем это нужно
+## Why it matters
 
-Интернет не однороден. Он состоит из языковых сегментов со слабой связностью:
+The internet is not homogeneous. It consists of weakly connected language segments:
 
-- **EN** — самый широкий слой, но не весь: за пределами EN живёт уникальный контент.
-- **ZH** — крупнейший отдельный сегмент: обратный инжиниринг, железо, дешёвые массовые туториалы, локальные экосистемы. Многое из этого не индексируется западными поисковиками и не переводится.
-- **RU** — сильные локальные экосистемы: системное администрирование, реверс-инжиниринг, локальные рынки, реалии региона.
-- **JP / KO / DE / ES / FR / PT / AR** — нишевые супер-силы: JP — игры, аниме, электроника; KO — веб-технологии и геймдев; DE — машиностроение; ES/PT — огромные аудитории и локальные рынки.
+- **EN** — the widest layer, but not all of it: unique content lives outside EN.
+- **ZH** — the largest separate segment: reverse engineering, hardware, cheap mass tutorials, local ecosystems. Much of it is not indexed by Western search engines and is not translated.
+- **RU** — strong local ecosystems: system administration, reverse engineering, local markets, regional realities.
+- **JP / KO / DE / ES / FR / PT / AR** — niche superpowers: JP — games, anime, electronics; KO — web technologies and gamedev; DE — mechanical engineering; ES/PT — huge audiences and local markets.
 
-Факт, известный в одном сегменте, может отсутствовать в другом. Смена языка — это не «перевод того же самого», а **другая карта местности**.
+A fact known in one segment may be missing from another. Switching language is not "translating the same thing" — it is **a different map of the terrain**.
 
-## Стартовые оси
+## Starting axes
 
-- База (всегда): язык вопроса **+ EN**.
-- Расширение (сложные/нишевые темы, всё, что не нашлось в базе): **+ ZH + RU**.
-- По домену:
+- Base (always): the question's language **+ EN**.
+- **The owner's or the place's language** if the subject is local: a local operator, agency or media outlet publishes news about repairs, closures, reforms and new rules in the local language earlier and in more detail. The cause query and the death query must be run in this language too.
+- Extension (complex/niche topics, anything not found in the base): **+ ZH + RU**.
+- By domain:
 
-| Домен | Дополнительные языки |
+| Domain | Additional languages |
 |---|---|
-| Игры, аниме, консоли, retro | JP, KO, ZH |
-| Электроника, компоненты, железо | ZH, JP, DE |
-| Машиностроение, авто, станки | DE, ZH |
-| Мобильный разработка, Android-моды | ZH, KO |
-| Математика, алгоритмы, олимпиады | ZH, RU |
-| Локальные рынки и реалии стран | Язык страны + соседние |
+| Games, anime, consoles, retro | JP, KO, ZH |
+| Electronics, components, hardware | ZH, JP, DE |
+| Mechanical engineering, cars, machine tools | DE, ZH |
+| Mobile development, Android mods | ZH, KO |
+| Mathematics, algorithms, olympiads | ZH, RU |
+| Local markets and country realities | The country's language + neighbors |
 
-## Терминологическая петля (обязательная механика)
+## The terminology loop (a mandatory mechanic)
 
-Первый перевод запроса почти всегда нетерминологичен: он передаёт смысл, но не те слова, которыми пользуется носители домена.
+The first translation of a query is almost always non-terminological: it conveys the meaning but not the words domain natives use.
 
-1. Переведи запрос (сам; если есть MT-инструмент — им, но с проверкой). Сделай обратный перевод и сверь смысл.
-2. Пройди закон 1–2 с переведённым запросом.
-3. Из заголовков и первых абзацев результатов выпиши **нативную терминологию**: как называют концепт, какие кальки/аббревиатуры используют.
-4. Перезапроси нативными терминами.
-5. Повторяй 3–4 до насыщения.
+1. Translate the query (yourself; with an MT tool if available, but check it). Back-translate and compare the meaning.
+2. Go through Laws 1–2 with the translated query.
+3. From the titles and first paragraphs of the results, write down the **native terminology**: what the concept is called, which calques/abbreviations are used.
+4. Re-query with the native terms.
+5. Repeat 3–4 until saturation.
 
-Пример: `load balancer` дословно → 负载均衡器, но в доках и блогах чаще пишут `LB` / `均衡`. Запрос с нативным термином даёт совсем другую выдачу.
+Example: `load balancer` literally → 负载均衡器, but docs and blogs more often write `LB` / `均衡`. A query with the native term gives completely different results.
 
-## Специфика сегментов
+## Segment specifics
 
 ### ZH
-- Пиши упрощённым китайским (упр. чаще всего; традиционный — для Тайваня/Гонконга тем).
-- Ключевые площадки: Zhihu (知乎), CSDN, SegmentFault, Baidu Zhidao, JianShu, Bilibili (видео-туториалы), V2EX.
-- Термины часто кальки или транслитерации: Docker → Docker (не переводится), cloud → 云, cache → 缓存.
-- Часть западных сервисов из КНР недоступна — местный контент решает те же задачи своими средствами, отсюда уникальные решения.
+- Write in simplified Chinese (simplified most often; traditional — for Taiwan/Hong Kong topics).
+- Key platforms: Zhihu (知乎), CSDN, SegmentFault, Baidu Zhidao, JianShu, Bilibili (video tutorials), V2EX.
+- Terms are often calques or transliterations: Docker → Docker (not translated), cloud → 云, cache → 缓存.
+- Some Western services are unavailable from mainland China — local content solves the same problems with its own means, hence unique solutions.
 
 ### RU
-- Habr, Stack Overflow на русском, vc.ru, профильные форумы (например, forum.ubuntu.ru), Telegram-сообщества.
-- Сильные стороны: сисадмин, сети, реверс, железо, локальные сервисы и реалии.
+- Habr, Russian-language Stack Overflow, vc.ru, specialized forums (e.g. forum.ubuntu.ru), Telegram communities.
+- Strengths: sysadmin, networking, reverse engineering, hardware, local services and realities.
 
 ### JP
-- Qiita, Zenn, teratail, 5ch. Технические блоги очень плотные по деталям.
+- Qiita, Zenn, teratail, 5ch. Technical blogs are very dense in detail.
 
 ### KO
-- OKKY, Namuwiki (энциклопедический, неожиданно глубокий по поп-культуре и играм).
+- OKKY, Namuwiki (encyclopedic, surprisingly deep on pop culture and games).
 
 ### DE / ES / FR / PT / AR
-- Подключай по домену из таблицы выше или когда базовые оси насыщены, а ответ неполон.
+- Bring them in by domain from the table above, or when the base axes are saturated and the answer is incomplete.
 
-## Правила сегментов
+## Segment rules
 
-- Один язык = **полная матрица** (закон 1 + закон 2), а не один пробный запрос.
-- Уникальный факт из сегмента → обязателен к проверке в других сегментах и в EN (изоляция сегмента порождает мифы).
-- Не знаешь язык — читай выдачу через перевод (в голове или инструментом): хуже скорость, не качество проверки.
+- One language = **the full matrix** (Law 1 + Law 2), not one trial query.
+- A unique fact from a segment → must be checked in other segments and in EN (segment isolation breeds myths).
+- Don't know the language — read the results via translation (in your head or with a tool): slower, but no worse a check.

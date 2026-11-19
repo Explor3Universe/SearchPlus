@@ -1,55 +1,56 @@
-# Арсенал переформулирования запросов
+# The reformulation arsenal
 
-Цель переформулировки — не косметика («те же слова в другом порядке»), а освещение **другого среза** информационного пространства. Люди, у которых есть ответ на твою тему, формулируют её иначе, чем ты. Твоя задача — перебрать их формулировки.
+The point of reformulating is not cosmetics ("the same words in a different order") but lighting up **a different slice** of the information space. The people who have the answer to your topic phrase it differently than you do. Your job is to go through their phrasings.
 
 ---
 
-## 1. Лексические оси
+## 1. Lexical axes
 
-- **Синонимы и жаргон домена:** error → crash → panic → traceback → segfault; «не работает» → broken → fails → doesn't work → 一直报错.
-- **Гиперним / гипоним** (шире / уже): «state management» ↔ «Redux store rehydration»; «CSS layout» ↔ «grid subgrid support».
-- **Аббревиатуры и расшифровки:** K8s ↔ Kubernetes; JWT ↔ JSON Web Token.
-- **Бренд ↔ генерик:** «Docker Desktop» ↔ «container runtime on macOS»; «ChatGPT» ↔ «LLM chat».
-- **Транслитерации и кальки** — для не-EN осей: см. `languages.md`.
-- **Слова из выдачи:** лучшие формулировки дают чужие страницы. Нашёл один релевантный результат — выпиши из него, как автор называет проблему, и перезапроси его словами. Это самый быстрый способ выйти из тупика своих формулировок.
+- **Synonyms and domain jargon:** error → crash → panic → traceback → segfault; "doesn't work" → broken → fails → не работает → 一直报错.
+- **Hypernym / hyponym** (broader / narrower): "state management" ↔ "Redux store rehydration"; "CSS layout" ↔ "grid subgrid support".
+- **Abbreviations and expansions:** K8s ↔ Kubernetes; JWT ↔ JSON Web Token.
+- **Brand ↔ generic:** "Docker Desktop" ↔ "container runtime on macOS"; "ChatGPT" ↔ "LLM chat".
+- **Transliterations and calques** — for non-EN axes: see `languages.md`.
+- **The owner's words:** how the owner itself names the object, its plans and states (`Starter`, `EOL`, `maintenance window`, `errata`, `Übergangsregelung`). Its terms lead to its documents.
+- **Words from the results:** the best phrasings come from other people's pages. Found one relevant result — write down how its author names the problem and re-query in their words. This is the fastest way out of the dead end of your own phrasings.
 
-## 2. Структурные формы
+## 2. Structural forms
 
-Одна и та же тема существует в выдаче в разных грамматических формах:
+The same topic exists in the results in different grammatical forms:
 
-- **Вопрос-форма:** «how to X», «почему Y», «怎么 X».
-- **Симптом-форма:** описание наблюдения без догадки о причине («после сна ноутбука docker build виснет на resolving»).
-- **Ошибка-форма:** точный текст ошибки в кавычках («dns probe finished noerr»).
-- **API/команда-форма:** точное имя функции, флага, события (`--dns-search`, `ENOSPC`, `EPERM`).
-- **Цель-форма:** что хочется получить в итоге («make container resolve corporate DNS»).
-- **Проблема-форма:** «X doesn't work when Y».
-- **Сравнение:** «X vs Y», «X alternative to Y», «X replacement».
+- **Question form:** "how to X", "why Y", "почему Y", "怎么 X".
+- **Symptom form:** a description of the observation without a guess about the cause ("after laptop sleep, docker build hangs on resolving").
+- **Error form:** the exact error text in quotes ("dns probe finished noerr").
+- **API/command form:** the exact name of a function, flag, event (`--dns-search`, `ENOSPC`, `EPERM`).
+- **Goal form:** what you want in the end ("make container resolve corporate DNS").
+- **Problem form:** "X doesn't work when Y".
+- **Comparison:** "X vs Y", "X alternative to Y", "X replacement".
 
-## 3. Операторы и фильтры
+## 3. Operators and filters
 
-- `"точная фраза"` — фиксирует формулировку.
-- `site:github.com`, `site:stackoverflow.com`, `site:zhihu.com`, `site:habr.com`, `site:news.ycombinator.com` — направленный вертикальный поиск.
-- `intitle:`, `inurl:` — когда важно, чтобы термин был в заголовке/URL.
-- `filetype:pdf` — докаментация, статьи, datasheet'ы, стандарты.
-- `-исключение` — отсечь доминирующий нерелевантный смысл ( `-movie -wikipedia`).
-- `OR` — объединить варианты в одном запросе (`"dns fail" OR "dns timeout" docker`).
-- Год/версия текстом: `2025`, `python 3.12`, `ubuntu 24.04`.
-- `before:` / `after:` — где поддерживается, для исторического среза.
+- `"exact phrase"` — pins the wording.
+- `site:github.com`, `site:stackoverflow.com`, `site:zhihu.com`, `site:habr.com`, `site:news.ycombinator.com` — targeted vertical search.
+- `intitle:`, `inurl:` — when the term must be in the title/URL.
+- `filetype:pdf` — documentation, papers, datasheets, standards.
+- `-exclusion` — cut off a dominant irrelevant meaning (`-movie -wikipedia`).
+- `OR` — combine variants in one query (`"dns fail" OR "dns timeout" docker`).
+- Year/version as text: `2025`, `python 3.12`, `ubuntu 24.04`.
+- `before:` / `after:` — where supported, for a historical slice.
 
-## 4. Темпоральные и версионные срезы
+## 4. Temporal and version slices
 
-- Тема + год: `X 2024`, `X 2025` — выдача радикально другая.
+- Topic + year: `X 2024`, `X 2025` — radically different results.
 - `X changelog`, `X release notes`, `X migration guide`, `X deprecation`.
 - `X breaking change`, `X regression`.
-- Конкретная версия: «работало в X 2.3, сломалось в X 3.0» — два отдельных запроса на каждую версию.
+- A specific version: "worked in X 2.3, broke in X 3.0" — two separate queries, one per version.
 
-## 5. Ось опровержения: смерть-запросы (закон 0)
+## 5. The refutation axis: death queries (Law 0)
 
-Найденный ответ — тезис, а не факт (см. закон 0 и `verification.md`). Пока по тезису не запущен поиск опровержения и не вынесен вердикт — подвопрос не закрыт. Смерть-запрос — **первый** запрос после появления тезиса, а не последний пункт списка вариаций.
+A found answer is a claim, not a fact (see Law 0 and `verification.md`). Until a refutation search has been run for the claim and a verdict reached, the sub-question is not closed. A death query is the **first** query after a claim appears, not the last item on the list of variations.
 
-**Формула:** `[точное имя тезиса] + [глагол смерти] + [год]`, минимум на языке вопроса и на EN, плюс новостная вертикаль (`+ новости`, `site:` новостных доменов).
+**Formula:** `[exact name of the claim] + [death verb] + [year]`, at least in the question's language and in EN, plus the news vertical (`+ news`, `site:` of news domains).
 
-Словарь глаголов смерти:
+Dictionary of death verbs:
 
 - RU: закрыт, отменён, прекратил, не работает, больше не, перестал
 - EN: closed, shut down, discontinued, ceased, stopped, no longer, gone, bankrupt
@@ -57,37 +58,68 @@
 - ZH: 停运, 关闭, 停止运营, 破产
 - DE / FR / ES: eingestellt, geschlossen / fermé, supprimé / cerrado, eliminado
 
-Типы контр-запросов по ситуации:
+Types of counter-queries by situation:
 
-- **работа сервиса/линии/компании:** `[X] closed 2026`, `[X] больше не работает` — новости сильнее гайдов;
-- **техника:** `X deprecated`, `X broken`, `X security issue`, `X known issue`, `X gotcha`, `X regression`;
-- **живые жалобы:** `X reddit`, `X HN`, `X критика` (RU-ось);
-- **сравнение:** `X vs Y` — чем кандидат хуже альтернатив.
+- **operation of a service/line/company:** `[X] closed 2026`, `[X] больше не работает`, `[X] suspended`;
+- **access condition:** `[X] requires …`, `[X] … required`, `[X] impossible without …` — plus going straight to the owner's documentation, billing and terms (`site:[owner domain] docs …`);
+- **cause query (causal check):** `why X closed`, `X reform reason`, `почему X закрылся`, `למה X נסגר` + years — a change in the state of the world should have a causal mechanism (details — `verification.md`, "The cause query");
+- **technical:** `X deprecated`, `X broken`, `X security issue`, `X known issue`, `X gotcha`, `X regression`;
+- **live complaints:** `X reddit`, `X HN`, `X критика` (RU axis);
+- **comparison:** `X vs Y` — how the candidate is worse than the alternatives.
 
-Считается пройденным, если новости о смерти не нашлись **и** владелец состояния (оператор, официальный реестр, расписание) подтверждает работу. Нашлась новость о смерти — она сильнее любого числа согласных гайдов: разберись, кто прав, до публикации.
+Counts as passed when:
 
-## 6. Социальные площадки как отдельный срез
+1. the results are **read**: all documents from the owner's domain in the results and the strongest contradicting result are opened;
+2. each refutation found has passed **binding** (same object, segment, date, condition) and dating;
+3. the owner confirms the claim on the right layer: base rule + exceptions for the target date, and for conditions — the binding terms.
 
-Вопросы формулируй теми словами, которыми их задают люди: «docker dns hell», «почему отваливается», «求助 X 报错». Площадки: Reddit, HN, Stack Overflow, GitHub Discussions, профильные форумы, Zhihu, Habr, Telegram-каналы (через поиск по сайту).
+News of the death of **this object**, dated after the owner's last live evidence, is stronger than any number of agreeing guides. News about a neighboring object or an undated page is a lead for checking with the owner, not a verdict.
 
-## 7. Пример матрицы формулировок
+## 5a. The owner's exceptions axis
 
-Тема: «почему Docker-контейнер теряет DNS после сна ноутбука».
+A base rule (schedule, prices, documentation) is true "in general". The owner often publishes the state for a specific date separately. Queries and entry points:
 
-| # | Тип | Запрос |
+- `site:[owner domain] disruptions OR status OR incidents OR "known issues" OR changelog OR "release notes" OR notices`;
+- `[X] [target month/date] changes`, `[X] works / maintenance / travaux / Wartung + period`;
+- `[X] upcoming changes`, `[X] from [date]`, `[X] will change`, `[X] transitional provisions`, `[X] amendments take effect`;
+- pointer pages that the owner's page itself points to ("changes are not reflected here", "see section …");
+- **special cases, when the base page is silent about the user's case:** `site:[owner domain] [X] exemption OR exempt OR "does not apply" OR "not required" OR "special cases"`, `site:[owner domain] "when you do not need"`, `[X] except / not required / exempt / exemption`; plus the owner's FAQ, factsheets, staff guidance;
+- **official publication channel:** `[X] Federal Register / Official Journal / Bundesgesetzblatt / Journal officiel / official publication + year`, `[X] effective [date]`, `[X] fee adjustment [year]`, `[X] takes effect`;
+- **the owner's mirrors, if its page is unavailable:** the owner's exact phrase in quotes, the same document on the sites of other missions, the press office, in the documentation repository (`site:[other official domain]`).
+
+## 5b. The mechanism axis: solutions beyond the list of candidates
+
+"Best of X" lists set the candidates, not the boundaries of the solution. For each function of the goal and for each near miss:
+
+- `how to [function] without [constraint]` — `how to receive parcels without a home address`, `how to sign a PDF without a paid account`;
+- `[candidate] workaround [violated constraint]`, `keep [candidate] [desired property]`;
+- `[function] self-hosted`, `[function] alternative`, `[solution class] vs [solution class]`;
+- neighboring nodes and categories: `[X] near [place]`, `[X] from [neighboring point]`, `[function] via another product category`.
+
+A workaround is a separate claim: check with the owner whether it is allowed and what its risks are.
+
+## 6. Social platforms as a separate slice
+
+Phrase questions in the words people use to ask them: "docker dns hell", "почему отваливается", "求助 X 报错". Platforms: Reddit, HN, Stack Overflow, GitHub Discussions, specialized forums, Zhihu, Habr, Telegram channels (via site search).
+
+## 7. Example formulation matrix
+
+Topic: "why a Docker container loses DNS after the laptop sleeps".
+
+| # | Type | Query |
 |---|---|---|
-| 1 | Симптом EN | `docker dns resolution fails after sleep` |
-| 2 | Ошибка | `"dns probe finished noerr" docker` |
-| 3 | Жаргон | `systemd-resolved docker dns break ubuntu` |
-| 4 | Версия | `docker 27 dns timeout ubuntu 24.04` |
-| 5 | Вертикаль | `site:github.com docker dns sleep regression` |
-| 6 | Соц. форма | `docker dns after sleep reddit` |
-| 7 | Смерть-запрос (закон 0) | `docker dns fix removed deprecated 2026` |
-| 8 | ZH (после петли) | `docker 容器 DNS 解析失败 休眠 唤醒` |
+| 1 | Symptom EN | `docker dns resolution fails after sleep` |
+| 2 | Error | `"dns probe finished noerr" docker` |
+| 3 | Jargon | `systemd-resolved docker dns break ubuntu` |
+| 4 | Version | `docker 27 dns timeout ubuntu 24.04` |
+| 5 | Vertical | `site:github.com docker dns sleep regression` |
+| 6 | Social form | `docker dns after sleep reddit` |
+| 7 | Death query (Law 0) | `docker dns fix removed deprecated 2026` |
+| 8 | ZH (after the loop) | `docker 容器 DNS 解析失败 休眠 唤醒` |
 | 9 | RU | `docker dns не работает после сна ubuntu` |
 
-Девять запросей — девять разных срезов одной темы. Каждый прогоняется по закону 1 (до мусора), все вместе — до исчерпания (закон 2).
+Nine queries — nine different slices of one topic. Each is run per Law 1 (down to garbage), all together — until exhaustion (Law 2).
 
-## Правило остановки
+## Stop rule
 
-Вариация осмысленна, пока меняет срез. Две последовательные вариации вернули только дубли → формулировочное пространство исчерпано → следующая ось: язык, вертикаль или бэкенд.
+A variation is meaningful while it changes the slice. Two consecutive variations returned only duplicates → the formulation space is exhausted → next axis: language, vertical or backend.

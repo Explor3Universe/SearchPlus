@@ -1,59 +1,59 @@
-# Вертикальные источники и снежный ком
+# Vertical sources and snowballing
 
-## Принцип
+## Principle
 
-У каждого домена есть места, где знание живёт **локально**: трекеры задач, документация, форумы, реестры. Общий веб-поиск — хорошее начало, но для экспертных тем вертикаль почти всегда точнее и глубже. У каждой вертикали есть внутренний поиск — используй его напрямую или через `site:`.
+Every domain has places where knowledge lives **locally**: issue trackers, documentation, forums, registries. General web search is a good start, but for expert topics a vertical is almost always more precise and deeper. Every vertical has an internal search — use it directly or via `site:`.
 
-## Каталог по доменам
+## Catalog by domain
 
-### Программирование и софт
-- Официальная документация (первичный источник — всегда приоритет).
-- **GitHub: issues, PR, Discussions, SECURITY.md** — часто единственное место, где живут баги, регрессии и обходные пути.
-- Stack Overflow (англ. + рус.), MDN.
-- Реестры пакетов: npm, PyPI, crates.io, Maven Central — changelog'и и метаданные версий.
-- HN (news.ycombinator.com), Reddit (r/programming, доменные сабы), Lobsters, dev.to.
+### Programming and software
+- Official documentation (a primary source — always the priority).
+- **GitHub: issues, PRs, Discussions, SECURITY.md** — often the only place where bugs, regressions and workarounds live.
+- Stack Overflow (English + Russian), MDN.
+- Package registries: npm, PyPI, crates.io, Maven Central — changelogs and version metadata.
+- HN (news.ycombinator.com), Reddit (r/programming, domain subs), Lobsters, dev.to.
 
-### Безопасность
-- NVD, CVE.org, advisories вендоров, GitHub Security Advisories, exploit-db, CISA KEV.
-- Отчёты и write-up'ы: PortSwigger blog, Project Zero, секретные списки рассылок.
+### Security
+- NVD, CVE.org, vendor advisories, GitHub Security Advisories, exploit-db, CISA KEV.
+- Reports and write-ups: PortSwigger blog, Project Zero, closed mailing lists.
 
-### Наука и исследования
+### Science and research
 - arXiv, PubMed, Semantic Scholar, Google Scholar, dblp.
-- Сайты конференций, supplementary materials, диссертационные базы.
+- Conference sites, supplementary materials, dissertation databases.
 
-### Железо и электроника
-- Datasheet-агрегаторы (alldatasheet, datasheetspdf), приложения-ноты вендоров.
+### Hardware and electronics
+- Datasheet aggregators (alldatasheet, datasheetspdf), vendor application notes.
 - EEVblog forum, r/AskElectronics, r/PrintedCircuitBoard.
 
-### Китайский сегмент
-- Zhihu, CSDN, SegmentFault, V2EX, 36kr (бизнес/технологии), Bilibili (туториалы), Baidu Zhidao.
+### Chinese segment
+- Zhihu, CSDN, SegmentFault, V2EX, 36kr (business/tech), Bilibili (tutorials), Baidu Zhidao.
 
-### Русский сегмент
-- Habr, vc.ru, Stack Overflow на русском, профильные форумы, mailing lists.
+### Russian segment
+- Habr, vc.ru, Russian-language Stack Overflow, specialized forums, mailing lists.
 
-### Японский сегмент
+### Japanese segment
 - Qiita, Zenn, teratail, 5ch.
 
-### Продукты, компании, рынки
-- Доки вендоров, пресс-релизы, отчёты (пейволлы обходить поиском названий документов в открытых зеркалах — легально и обычно работает).
-- LinkedIn, реестры компаний, судебные и регуляторные базы, вакансии (для дат и фактов о компаниях).
+### Products, companies, markets
+- Vendor docs, press releases, reports (get around paywalls by searching for document titles in open mirrors — legal and usually works).
+- LinkedIn, company registries, court and regulatory databases, job postings (for dates and facts about companies).
 
-### Новости и текущие события
-- Новостные агрегаторы с фильтром по дате, официальные каналы сторон.
-- Обязательно: минимум две независимые редакции на каждый ключевой факт.
+### News and current events
+- News aggregators with a date filter, the parties' official channels.
+- Mandatory: at least two independent newsrooms per key fact.
 
-## Снежный ком (citation chaining)
+## Snowballing (citation chaining)
 
-Как только нашёл один сильный документ — это не результат, а **вход в сеть ссылок**:
+As soon as you have found one strong document, it is not a result but **an entry into a network of links**:
 
-1. **Прямое:** bibliography, references, «see also», related links внутри документа.
-2. **Обратное:** кто ссылается на этот документ — ищи `"<заголовок или URL>"` + `reddit|HN|forum|评`.
-3. **Обсуждения:** найденный материал почти всегда кем-то обсуждался — обсуждения содержат критику, опровержения и практический опыт, которых нет в самом материале.
-4. **Автор:** другие материалы того же автора/организации по теме.
+1. **Forward:** bibliography, references, "see also", related links inside the document.
+2. **Backward:** who links to this document — search `"<title or URL>"` + `reddit|HN|forum|评`.
+3. **Discussions:** the material you found has almost always been discussed by someone — discussions contain criticism, refutations and practical experience that are not in the material itself.
+4. **Author:** other materials on the topic by the same author/organization.
 
-## Бэкенды как ось вариаций
+## Backends as an axis of variation
 
-Разные поисковые инструменты — websearch, MCP-поисковики, прямой fetch к поисковику, внутренние поиски вертикалей — дают **разную выдачу** на один и тот же запрос.
+Different search tools — websearch, MCP search engines, a direct fetch to a search engine, verticals' internal searches — give **different results** for the same query.
 
-- Ключевые запросы темы прогоняй минимум через **два разных** бэкенда.
-- Смена бэкенда — легитимный способ «открыть следующую страницу» там, где нет пагинации.
+- Run the key queries of a topic through at least **two different** backends.
+- Switching the backend is a legitimate way to "open the next page" where there is no pagination.
