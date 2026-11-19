@@ -1,5 +1,6 @@
 {
   "name": "searchplus",
+  "displayName": "SearchPlus",
   "version": "1.1.1",
   "description": "Deep-research and verification mode for AI agents: every claim that can change is checked with a refutation search and against the live primary source before it reaches the answer.",
   "author": {
@@ -17,5 +18,8 @@
     "verification",
     "agent-skills"
   ],
-  "icon": "assets/icon.png"
+  "icon": "assets/icon.png",
+  "documentationUrl": "https://github.com/Explor3Universe/SearchPlus#readme",
+  "supportUrl": "https://github.com/Explor3Universe/SearchPlus/issues",
+  "privacyPolicyUrl": "https://github.com/Explor3Universe/SearchPlus/blob/main/PRIVACY.md"
 }
