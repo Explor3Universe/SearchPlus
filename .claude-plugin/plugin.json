@@ -1,6 +1,6 @@
 {
   "name": "searchplus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Deep-research and verification mode for AI agents: every claim that can change is checked with a refutation search and against the live primary source before it reaches the answer.",
   "author": {
     "name": "Explor3Universe",
@@ -16,5 +16,6 @@
     "fact-checking",
     "verification",
     "agent-skills"
-  ]
+  ],
+  "icon": "assets/icon.png"
 }

@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] — 2026-11-19
+
+### Added
+
+- Plugin icon (`assets/icon.png`), referenced from the Claude Code, Cursor and Agent Plugins manifests.
+- Cursor plugin manifest (`.cursor-plugin/plugin.json`).
+
 ## [1.1.0] — 2026-11-19
 
 ### Changed
@@ -32,5 +39,6 @@ First release.
 - README in English and Russian.
 - License: Apache-2.0.
 
+[1.1.1]: https://github.com/Explor3Universe/SearchPlus/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/Explor3Universe/SearchPlus/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Explor3Universe/SearchPlus/releases/tag/v1.0.0
