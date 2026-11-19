@@ -232,14 +232,35 @@ claude plugin install searchplus@searchplus
 ```bash
 git clone https://github.com/Explor3Universe/SearchPlus.git
 mkdir -p ~/.claude/skills
-cp -r SearchPlus/searchplus ~/.claude/skills/
+cp -r SearchPlus/skills/searchplus ~/.claude/skills/
 ```
 
 לפרויקט אחד בלבד, העתיקו את התיקייה אל `.claude/skills/` בתוך הפרויקט. כדי להפעיל במפורש: `/searchplus`.
 
+### התקנה ב-Codex
+
+```bash
+codex plugin marketplace add Explor3Universe/SearchPlus
+codex plugin add searchplus@searchplus
+```
+
+### התקנה ב-Gemini CLI
+
+```bash
+gemini extensions install https://github.com/Explor3Universe/SearchPlus
+```
+
 ### סוכנים אחרים
 
-הסקיל SearchPlus משתמש בפורמט הפתוח Agent Skills: תיקייה עם `SKILL.md` ו-`references/`. בכל סוכן שתומך בפורמט הזה, העתיקו את התיקייה `searchplus/` לתיקיית הסקילים של הסוכן. הוראות מפורטות לסוכנים מסוימים יתווספו אחרי שייבדקו.
+הכלי [skills CLI](https://github.com/vercel-labs/skills) מתקין את SearchPlus ב-OpenCode, Amp, Codex, Gemini CLI, Claude Code ובסוכנים אחרים שקוראים את הפורמט הפתוח Agent Skills:
+
+```bash
+npx skills add Explor3Universe/SearchPlus
+```
+
+אפשר גם להעתיק ידנית את התיקייה `skills/searchplus/` לתיקיית הסקילים של הסוכן.
+
+איכות התשובות נבדקה עד כה רק ב-Claude Code; בסוכנים האחרים נבדקו ההתקנה וזיהוי הסקיל.
 
 ## בדיקות eval
 

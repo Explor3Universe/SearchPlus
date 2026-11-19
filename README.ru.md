@@ -232,14 +232,35 @@ claude plugin install searchplus@searchplus
 ```bash
 git clone https://github.com/Explor3Universe/SearchPlus.git
 mkdir -p ~/.claude/skills
-cp -r SearchPlus/searchplus ~/.claude/skills/
+cp -r SearchPlus/skills/searchplus ~/.claude/skills/
 ```
 
 Только для одного проекта — скопируйте папку в `.claude/skills/` внутри этого проекта. Вызвать явно — `/searchplus`.
 
+### Codex
+
+```bash
+codex plugin marketplace add Explor3Universe/SearchPlus
+codex plugin add searchplus@searchplus
+```
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/Explor3Universe/SearchPlus
+```
+
 ### Другие агенты
 
-SearchPlus использует открытый формат Agent Skills: папка с `SKILL.md` и `references/`. В любом агенте, который поддерживает этот формат, скопируйте папку `searchplus/` в каталог скиллов агента. Пошаговые инструкции для конкретных агентов появятся после того, как они будут проверены.
+[skills CLI](https://github.com/vercel-labs/skills) ставит SearchPlus в OpenCode, Amp, Codex, Gemini CLI, Claude Code и другие агенты, которые читают открытый формат Agent Skills:
+
+```bash
+npx skills add Explor3Universe/SearchPlus
+```
+
+Или скопируйте папку `skills/searchplus/` в каталог скиллов агента вручную.
+
+Качество ответов пока проверялось только в Claude Code; в остальных агентах проверены установка и обнаружение скилла.
 
 ## Eval-набор
 

@@ -2,10 +2,17 @@
 
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.1.0] — 2026-11-19
+
+### Changed
+
+- The skill moved from `searchplus/` to `skills/searchplus/`, the standard location other agents and catalogs look in.
 
 ### Added
 
+- A portable `plugin.json` (Agent Plugins format), read by Codex and Antigravity.
+- `gemini-extension.json`: SearchPlus installs as a Gemini CLI extension.
+- README: install instructions for Codex, Gemini CLI and other agents via `npx skills`.
 - README in Ukrainian and Hebrew.
 
 ## [1.0.0] — 2026-11-19
@@ -25,5 +32,5 @@ First release.
 - README in English and Russian.
 - License: Apache-2.0.
 
-[Unreleased]: https://github.com/Explor3Universe/SearchPlus/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/Explor3Universe/SearchPlus/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Explor3Universe/SearchPlus/releases/tag/v1.0.0

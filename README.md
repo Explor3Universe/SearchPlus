@@ -230,14 +230,35 @@ The skill switches on by itself for suitable questions. To call it explicitly, u
 ```bash
 git clone https://github.com/Explor3Universe/SearchPlus.git
 mkdir -p ~/.claude/skills
-cp -r SearchPlus/searchplus ~/.claude/skills/
+cp -r SearchPlus/skills/searchplus ~/.claude/skills/
 ```
 
 For a single project, copy the folder into `.claude/skills/` inside that project instead. To call it explicitly, use `/searchplus`.
 
+### Codex
+
+```bash
+codex plugin marketplace add Explor3Universe/SearchPlus
+codex plugin add searchplus@searchplus
+```
+
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/Explor3Universe/SearchPlus
+```
+
 ### Other agents
 
-SearchPlus uses the open Agent Skills format: a folder with `SKILL.md` and `references/`. In any agent that supports this format, copy the `searchplus/` folder into the agent's skills directory. Step-by-step instructions for specific agents will be added once they have been tested.
+The [skills CLI](https://github.com/vercel-labs/skills) installs SearchPlus into OpenCode, Amp, Codex, Gemini CLI, Claude Code and other agents that read the open Agent Skills format:
+
+```bash
+npx skills add Explor3Universe/SearchPlus
+```
+
+Or copy the `skills/searchplus/` folder into your agent's skills directory by hand.
+
+Answer quality has so far been tested only in Claude Code; in the other agents, installation and skill discovery were checked.
 
 ## Evals
 
