@@ -18,5 +18,32 @@
     "verification",
     "agent-skills"
   ],
-  "logo": "assets/icon.png"
+  "logo": "assets/icon.png",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "SearchPlus",
+        "shortDescription": "Deep research, verified facts",
+        "longDescription": "SearchPlus turns your AI agent into a careful researcher for facts that change: prices, rules, schedules, limits, service status, versions and requirements.\n\nOrdinary agent search stops at the first plausible pages and trusts the majority, even when nine guides copy one outdated text. SearchPlus treats every finding as a claim, not an answer. Before a claim reaches the answer it has to survive a refutation search (\"X closed / discontinued / changed + year\"), a search for the cause of any change, and a check against the source that actually owns the fact: the operator, the agency, the vendor's documentation or billing terms, including exception and disruption pages for the user's own date.\n\nThe result is an answer for the user's situation and date: what is confirmed (with the source and its date), what could not be confirmed, and how to check it. It also looks for solutions beyond the literal question, and reformulates queries across several languages, including the language of the place or of the owner of the information.\n\nBest for: whether something still works or exists, current prices and conditions, travel and entry rules, API and service changes, fact-checking, and decisions between options. Not meant for timeless facts or quick lookups.\n\nOpen source (Apache-2.0). Instructions only: no code, no servers, no data collection.",
+        "developerName": "Explor3Universe",
+        "category": "Productivity",
+        "websiteURL": "https://github.com/Explor3Universe/SearchPlus",
+        "supportURL": "https://github.com/Explor3Universe/SearchPlus/issues",
+        "privacyPolicyURL": "https://github.com/Explor3Universe/SearchPlus/blob/main/PRIVACY.md",
+        "termsOfServiceURL": "https://github.com/Explor3Universe/SearchPlus/blob/main/LICENSE",
+        "defaultPrompt": [
+          "Is the night train from Paris to Berlin running in early December? Check the operator's current timetable and disruptions.",
+          "I fly to London next month with a connection. Do I need an ETA or a visa? Verify with official sources.",
+          "Is this API's free tier still available without a credit card? Check the provider's current terms."
+        ],
+        "brandColor": "#2563EB",
+        "brandColorDark": "#38BDF8",
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      },
+      "publication": {
+        "release_notes": "First public release of SearchPlus: a deep-research and verification skill (one skill, Markdown instructions only)."
+      }
+    }
+  }
 }
