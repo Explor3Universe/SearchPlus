@@ -1,6 +1,7 @@
 ---
 name: searchplus
 description: Deep-research and verification mode. Every claim that can change must survive a refutation search ("X closed/discontinued + year") and a check against the live primary source (operator, registry, not guides or forums); the answer is "is this true for the user's date and conditions", not "is it described somewhere". Use when the answer depends on real-world facts that change or are hard to find - whether something still works, exists or is available; prices, conditions, limits, schedules, rules, requirements, versions, statuses; practical travel, product, service and API questions, even when the answer seems obvious; recommendations and comparisons for a decision; fact-checking; troubleshooting that needs issues, changelogs or known bugs; researching a topic, library or market; conflicting sources; ordinary search found nothing. Not for timeless facts (history, definitions, math), questions answered by local code or files, or when the user explicitly asks for a quick unverified answer.
+license: Apache-2.0
 ---
 
 # SearchPlus — ultimate deep-research mode

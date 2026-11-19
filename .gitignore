@@ -1,0 +1,10 @@
+# Local test journals and tool state
+lab/
+.opencode/
+
+# Eval run outputs
+evals/results/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+{
+  "name": "searchplus",
+  "description": "SearchPlus: a deep-research and verification skill for AI agents.",
+  "owner": {
+    "name": "Explor3Universe",
+    "url": "https://github.com/Explor3Universe"
+  },
+  "plugins": [
+    {
+      "name": "searchplus",
+      "source": "./",
+      "description": "Deep-research and verification mode for AI agents: every claim that can change is checked with a refutation search and against the live primary source before it reaches the answer.",
+      "category": "productivity",
+      "tags": ["research", "web-search", "fact-checking", "verification"]
+    }
+  ]
+}

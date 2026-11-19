@@ -4,6 +4,8 @@
 
 **English** | [Русский](README.ru.md)
 
+[Installation](#installation) · [Example](#example-from-the-tests) · [Test results](#test-results) · [Limitations](#limitations) · [Changelog](CHANGELOG.md)
+
 A skill that turns your AI agent into a master of search and information gathering and fixes the "dumb search" problem of modern AI. It gives your agent the ability to find even the rarest, most niche or little-known information on the internet — and to check whether it is still true.
 
 The skill is based on in-depth research into the problems modern AI agents run into when searching the internet, and into their causes. To build it, a counter-methodology was developed: it fixes the problems of "dumb" search and builds, from scratch, an algorithm for deep search of rare, hard-to-find information on the web.
@@ -157,3 +159,100 @@ The tests covered different areas (transport, hosting, certificates, entry rules
 - a mid-tier model at high reasoning effort with the skill scored best across all tests.
 
 The sample is still small. A detailed methodology and the raw test results will be published separately.
+
+## Example from the tests
+
+The question: *"In early December 2026 I want to get from Paris to Berlin by night train, with a sleeper or at least a couchette, no flying. Which train actually runs now, how often, and where do I buy a ticket?"*
+
+Same model, same reasoning effort, with and without the skill. Both answers found that the old Nightjet had been cancelled and that European Sleeper now runs the route three times a week. The difference was one level deeper:
+
+- **Without the skill**, the agent took the operator's base timetable and built the plan around arriving at Berlin Hauptbahnhof. It noted in passing that track works are not included in the standard timetable and left it to the user to check the station.
+- **With the skill**, after the base timetable the agent opened the operator's disruptions page for the travel dates: *"from 1 December to 11 December no stop at Berlin Hauptbahnhof… additional stop at Berlin Gesundbrunnen"*. Every departure the user could take in early December arrives at a different station, and the plan said so.
+
+## Test results
+
+The first multi-domain round had four questions: free Docker hosting, a night train, certificate expiry notices and OCSP, and Schengen entry. Each had an outdated-premise trap and an answer that can be checked with the owner. Each answer was scored from 0 to 3 (3 — correct, with the key facts confirmed at the source; 2 — correct with minor gaps; 1 — partly correct or a missed trap; 0 — wrong or misleading), 12 points maximum.
+
+| Model and reasoning effort | Without the skill | With the skill |
+|---|---|---|
+| Mid-tier model, medium | 6 / 12 · 165k tokens | 9 / 12 · 257k tokens |
+| Mid-tier model, high | 9 / 12 · 210k tokens | **12 / 12** · 347k tokens |
+| Small fast model, medium | — | 7 / 12 · 281k tokens |
+| Small fast model, low | — | 5 / 12 · 250k tokens |
+
+The failures of that round were broken down by class, and each class was closed with a general rule rather than a fix for a specific question. The next round used five new questions: security updates after end of support, airside transit, CI pricing, a free weather API and visa-free entry.
+
+| Configuration | Score |
+|---|---|
+| Small fast model, low effort, **with** the skill | 12 / 15 · 283k tokens |
+| Mid-tier model, medium effort, **without** the skill | 12 / 15 · 195k tokens |
+
+Before the revision, the same pair scored 5 / 12 against 6 / 12. The questions were different, so this is a consistent signal rather than a measurement.
+
+Tokens are totals across all questions of a round. In those tests reading the skill cost about 15k tokens per question; the current English `SKILL.md` takes about 8k. There was one run per configuration and the scoring was not blind, so treat these numbers as preliminary. The tests were run on an earlier, Russian-language version of the skill; this English version is a translation and has not been benchmarked on its own yet.
+
+## Limitations
+
+- **Slower and more expensive.** In the tests the skill used about 1.6 times as many tokens and took about twice as long as the same model without it. For quick lookups that isn't worth it, so the skill is not meant to switch on for them.
+- **Needs web search and page reading.** Without these tools the agent can only label claims as unverified.
+- **Blocked pages stay blocked.** Captchas, 403 errors and pages that only render with JavaScript can't be read. The agent then looks for the owner's mirrors, but sometimes the honest result is "could not confirm".
+- **Some checks are yours.** Availability and the final price for your exact date, or conditions tied to your account, show up only after you take a step yourself. The agent tells you what to check and what each result means.
+- **Small models copy the form better than the substance.** At low reasoning effort they sometimes produce the tables and labels without doing every check.
+- **The evidence is preliminary.** See the notes under the test results.
+- **Not for timeless facts, math or your local code.** An ordinary answer is better there.
+
+## Installation
+
+### Claude Code (plugin)
+
+```
+/plugin install searchplus --marketplace Explor3Universe/SearchPlus
+```
+
+This works in one step on Claude Code 2.1.275 or later. On older versions:
+
+```
+/plugin marketplace add Explor3Universe/SearchPlus
+/plugin install searchplus@searchplus
+```
+
+From the terminal:
+
+```bash
+claude plugin marketplace add Explor3Universe/SearchPlus
+claude plugin install searchplus@searchplus
+```
+
+The skill switches on by itself for suitable questions. To call it explicitly, use `/searchplus:searchplus`.
+
+### Claude Code (manual)
+
+```bash
+git clone https://github.com/Explor3Universe/SearchPlus.git
+mkdir -p ~/.claude/skills
+cp -r SearchPlus/searchplus ~/.claude/skills/
+```
+
+For a single project, copy the folder into `.claude/skills/` inside that project instead. To call it explicitly, use `/searchplus`.
+
+### Other agents
+
+SearchPlus uses the open Agent Skills format: a folder with `SKILL.md` and `references/`. In any agent that supports this format, copy the `searchplus/` folder into the agent's skills directory. Step-by-step instructions for specific agents will be added once they have been tested.
+
+## Evals
+
+The `evals/` folder holds a suite for `claude plugin eval`:
+
+- **trigger** cases check that the skill switches on for changeable facts and stays off for timeless facts, math, shell commands and explicit requests for a quick answer. They are cheap: each run is cut off after three turns on purpose, so the report marks it as stopped at the turn limit, and only the score matters. Allow the web tools, as in real work: without them a model may not reach for a research skill at all;
+- **behavior** cases replay real questions from the tests and check the answer: a refutation search, pages actually read, no internal jargon, and the facts against a reference. They are expensive.
+
+```bash
+claude plugin eval . --tag trigger --allow-tools WebSearch WebFetch
+claude plugin eval . --tag web --allow-tools WebSearch WebFetch --runs 1
+```
+
+The behavior cases are pinned to 19 November 2026. Their references were checked at the owners' sources on that date and will go out of date; the grader accepts a different answer if it is backed by a newer page from the owner.
+
+## License
+
+[Apache License 2.0](LICENSE)
