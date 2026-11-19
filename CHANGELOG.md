@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- README in Ukrainian and Hebrew.
+
 ## [1.0.0] — 2026-11-19
 
 First release.
@@ -19,4 +25,5 @@ First release.
 - README in English and Russian.
 - License: Apache-2.0.
 
+[Unreleased]: https://github.com/Explor3Universe/SearchPlus/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/Explor3Universe/SearchPlus/releases/tag/v1.0.0

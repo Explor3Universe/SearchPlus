@@ -2,7 +2,7 @@
 
 # SearchPlus
 
-**English** | [Русский](README.ru.md)
+**English** | [Русский](README.ru.md) | [Українська](README.uk.md) | [עברית](README.he.md)
 
 [Installation](#installation) · [Example](#example-from-the-tests) · [Test results](#test-results) · [Limitations](#limitations) · [Changelog](CHANGELOG.md)
 
